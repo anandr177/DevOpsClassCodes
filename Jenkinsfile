@@ -30,5 +30,14 @@ pipeline{
                 echo 'generate the docker image'
             }
         }
+        stage("push image to docker "){
+            steps{
+                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhub-pwd')]) {
+                sh "docker login -u anandr177 -p ${dockerhub-pwd}"
+                }
+                sh "docker push anandr177/addressbook:v1"
+                echo 'pushed docker image to docker hub'
+            }
+        }
     }
 }
