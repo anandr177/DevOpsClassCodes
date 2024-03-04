@@ -7,7 +7,7 @@ pipeline{
         stage("checkout from github"){
             steps{
                 git branch: 'master',
-                url:'https://github.com/saidevops8989/DevOpsClassCodes.git'
+                url:'https://github.com/anandr177/DevOpsClassCodes.git'
                 echo 'pulled from github successfully'
             }
         }
