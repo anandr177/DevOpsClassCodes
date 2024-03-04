@@ -52,5 +52,11 @@ pipeline{
                 echo 'pushed docker image to docker hub'
             }
         }
+        stage("Launch container"){
+            steps{
+                sh "docker push anandr177/addressbook:v1"
+                echo 'deployed docker image as a container'
+            }
+        }
     }
 }
