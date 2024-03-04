@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-        maven 'mymaven'
+        maven 'MyMaven'
     }
     stages{
         stage("checkout from github"){
