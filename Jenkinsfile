@@ -48,7 +48,7 @@ pipeline{
             steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 echo 'logged into docker hub'
-                sh "docker push anandr177/addressbook:v1"
+                sh "docker push anandr177/addressbook:v1.${BUILD_NUMBER}"
                 echo 'pushed docker image to docker hub'
             }
         }
