@@ -54,7 +54,7 @@ pipeline{
         }
         stage("Launch container"){
             steps{
-                sh "docker push anandr177/addressbook:v1"
+                sh "sudo docker run -d -it --name addressbook -p 8181:8080 anandr177/addressbook:v1"
                 echo 'deployed docker image as a container'
             }
         }
