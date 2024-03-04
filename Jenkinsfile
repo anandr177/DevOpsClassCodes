@@ -40,7 +40,7 @@ pipeline{
         }
         stage("Create docker image"){
             steps{
-                sh "docker build -t anandr177/addressbook:v1 ."
+                sh "docker build -t anandr177/addressbook:v1.${BUILD_NUMBER} ."
                 echo 'generate the docker image'
             }
         }
