@@ -37,7 +37,7 @@ pipeline{
         }
         stage("docker image"){
             steps{
-                sh "sudo docker build -t anandr177/addressbook:v1"
+                sh "docker build -t anandr177/addressbook:v1 ."
                 echo 'generate the docker image'
             }
         }
