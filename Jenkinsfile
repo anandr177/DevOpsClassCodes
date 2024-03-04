@@ -3,6 +3,9 @@ pipeline{
     tools{
         maven 'MyMaven'
     }
+     environment {     
+        DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')     
+    } 
     stages{
         stage("checkout"){
             steps{
@@ -32,9 +35,8 @@ pipeline{
         }
         stage("push image to docker "){
             steps{
-                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhub-pwd')]) {
-                sh "docker login -u anandr177 -p ${dockerhub-pwd}"
-                }
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                echo 'logged into docker hub'
                 sh "docker push anandr177/addressbook:v1"
                 echo 'pushed docker image to docker hub'
             }
