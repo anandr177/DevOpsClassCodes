@@ -4,35 +4,41 @@ pipeline{
         maven 'MyMaven'
     }
     stages{
-        stage("checkout from github"){
+        stage("checkout"){
             steps{
                 git branch: 'master',
                 url:'https://github.com/anandr177/DevOpsClassCodes.git'
                 echo 'pulled from github successfully'
             }
         }
-        stage("compile the code to executable format"){
+        stage("compile"){
             steps{
                 sh "mvn compile"
                 echo 'converted the code from human readable to machine readable '
             }
         }
-        stage("testing the code"){
+        stage("test"){
             steps{
                 sh "mvn test"
                 echo 'run and execute the test cases'
             }
         }
-        stage("code review to check quality of code"){
+        stage("code review"){
             steps{
                 sh "mvn pmd:pmd"
                 echo 'code review done'
             }
         }
-        stage("convert the code to package"){
+        stage("package"){
             steps{
                 sh "mvn  package"
                 echo 'convert the files to war file'
+            }
+        }
+        stage("docker image"){
+            steps{
+                sh "sudo docker build -t anandr177/addressbook:v1"
+                echo 'generate the docker image'
             }
         }
     }
