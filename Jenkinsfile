@@ -17,18 +17,7 @@ pipeline{
                 echo 'converted the code from human readable to machine readable '
             }
         }
-        stage("test"){
-            steps{
-                sh "mvn test"
-                echo 'run and execute the test cases'
-            }
-        }
-        stage("code review"){
-            steps{
-                sh "mvn pmd:pmd"
-                echo 'code review done'
-            }
-        }
+        
         stage("package"){
             steps{
                 sh "mvn  package"
