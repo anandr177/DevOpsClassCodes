@@ -52,7 +52,7 @@ pipeline{
                 echo 'pushed docker image to docker hub'
             }
         }
-        stage("Checkout"){
+        stage("Update kubernetes manifest"){
             steps{
                 git branch: 'main', credentialsId: 'githubcredentials', url: 'https://github.com/anandr177/kubernetes.git'
                 withCredentials([gitUsernamePassword(credentialsId: 'githubcredentials', gitToolName: 'Default')]) {
