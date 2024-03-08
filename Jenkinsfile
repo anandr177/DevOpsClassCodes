@@ -52,10 +52,9 @@ pipeline{
                 echo 'pushed docker image to docker hub'
             }
         }
-        stage("Launch container"){
+        stage("update manifest"){
             steps{
-                sh "docker run -d -it --name addressbook${BUILD_NUMBER} -p 8181:8080 anandr177/addressbook:v1.${BUILD_NUMBER}"
-                echo 'deployed docker image as a container'
+               
             }
         }
     }
